@@ -8,7 +8,6 @@ const LocationSelector = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [message, setMessage] = useState("");
 
   // Fetch countries from API on initial render
   useEffect(() => {
@@ -78,9 +77,6 @@ const LocationSelector = () => {
 
   const handleCityChange = (e) => {
     setSelectedCity(e.target.value);
-    setMessage(
-      `You selected ${selectedCity}, ${selectedState}, ${selectedCountry}`
-    );
   };
 
   return (
@@ -90,7 +86,6 @@ const LocationSelector = () => {
     >
       <h2 style={{ textAlign: "center" }}>Select Location</h2>
       <div className="dropdowns">
-        {/* <label>Select Country:</label> */}
         <select
           className="dropdown"
           value={selectedCountry}
@@ -103,8 +98,6 @@ const LocationSelector = () => {
             </option>
           ))}
         </select>
-
-        {/* <label class="indent">Select State:</label> */}
         <select
           className="dropdown"
           value={selectedState}
@@ -118,8 +111,6 @@ const LocationSelector = () => {
             </option>
           ))}
         </select>
-        {/* 
-        <label>Select City:</label> */}
         <select
           className="dropdown"
           value={selectedCity}
@@ -136,11 +127,7 @@ const LocationSelector = () => {
       </div>
       {selectedCity && (
         <h2 className="result">
-          You selected <span className="highlight">{selectedCity},</span>
-          <span className="fade">
-            {" "}
-            {selectedState}, {selectedCountry}
-          </span>
+          You selected {selectedCity}, {selectedState}, {selectedCountry}
         </h2>
       )}
     </div>
